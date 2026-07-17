@@ -20,7 +20,7 @@
             resolve({
               fileName: file.name.substr(0, file.name.lastIndexOf(".")), 
               content: event.target.result,
-              data: Papa.parse(csv, { header: true, skipEmptyLines: true }) 
+              data: Papa.parse(event.target.result, { header: true, skipEmptyLines: true }) 
             })
         }
         reader.readAsText(file)
