@@ -10,7 +10,9 @@
 
 <body>
   <a href="https://github.com/dirkarnez/csv-repl" target="_blank">dirkarnez/csv-repl</a><br>
-  <input type="file" id="input" multiple>
+  <input type="file" id="input" multiple><br>
+  <label for="checkbox-has-header">Has header?</label>
+  <input type="checkbox" id="checkbox-has-header"><br>
   <script>
     let globalObj = undefined;
     const readCSVText = file => new Promise((resolve) => {
@@ -20,7 +22,7 @@
             resolve({
               fileName: file.name.substr(0, file.name.lastIndexOf(".")), 
               content: event.target.result,
-              data: Papa.parse(event.target.result, { header: false, skipEmptyLines: true }) 
+              data: Papa.parse(event.target.result, { header: document.getElementById("checkbox-has-header").checked, skipEmptyLines: true }) 
             })
         }
         reader.readAsText(file)
